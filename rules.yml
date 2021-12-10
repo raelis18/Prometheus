@@ -1,0 +1,10 @@
+groups:
+- name: docker
+  rules:
+  - alert: Container Instance Stoped
+    expr: engine_daemon_container_states_containers{state="stopped"} > 0
+    for: 30s
+    labels:
+      severity: Disaster
+    annotations:
+      summary: Container Stopped
